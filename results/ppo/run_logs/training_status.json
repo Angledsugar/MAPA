@@ -1,0 +1,29 @@
+{
+    "Taxi": {
+        "checkpoints": [
+            {
+                "steps": 9160,
+                "file_path": "results\\ppo\\Taxi\\Taxi-9160.onnx",
+                "reward": 0.0,
+                "creation_time": 1675407104.0130246,
+                "auxillary_file_paths": [
+                    "results\\ppo\\Taxi\\Taxi-9160.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 9160,
+            "file_path": "results\\ppo\\Taxi.onnx",
+            "reward": 0.0,
+            "creation_time": 1675407104.0130246,
+            "auxillary_file_paths": [
+                "results\\ppo\\Taxi\\Taxi-9160.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.28.0",
+        "torch_version": "1.13.1+cu116"
+    }
+}

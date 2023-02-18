@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/MARLAA.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/Scenes/MAPA.unity
+  - enabled: 0
+    path: Assets/Scenes/MAPA_megamulti.unity
     guid: f83d09f9f53397847888eb452babc2bc
+  - enabled: 1
+    path: Assets/Scenes/MAPA_single.unity
+    guid: 782eb64867070784aa87ff333296eddc
   m_configObjects: {}

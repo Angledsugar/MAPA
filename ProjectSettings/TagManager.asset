@@ -9,6 +9,11 @@ TagManager:
   - target
   - Undefined
   - tempting
+  - Taxi
+  - wall
+  - passenger
+  - attacker
+  - frozenAgent
   layers:
   - Default
   - TransparentFX

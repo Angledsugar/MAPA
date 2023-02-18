@@ -69,7 +69,7 @@ public class CrawlerAgent : Agent
 
     public override void Initialize()
     {
-        SpawnTarget(TargetPrefab, transform.position); //spawn target
+        // SpawnTarget(TargetPrefab, transform.position); //spawn target
 
         m_OrientationCube = GetComponentInChildren<OrientationCubeController>();
         m_DirectionIndicator = GetComponentInChildren<DirectionIndicator>();
