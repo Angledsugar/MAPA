@@ -278,11 +278,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4829259627385899407, guid: b6c25760c9f41274492ac857be1f1824, type: 3}
       propertyPath: numAttacker
-      value: 30
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4829259627385899407, guid: b6c25760c9f41274492ac857be1f1824, type: 3}
       propertyPath: numPassenger
-      value: 30
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4829259627385899407, guid: b6c25760c9f41274492ac857be1f1824, type: 3}
       propertyPath: respawnPassenger

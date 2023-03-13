@@ -71,51 +71,10 @@ public class TaxiAgent : Agent
         SetResetParameters();
     }
 
-    // private void FixedUpdate()
-    // {
-    //     Debug.Log(CubeIndicator.TargetRandomPosition);
-    //     // GetInput();
-    //     HandleMotor();
-    //     HandleSteering();
-    //     UpdateWheels();
-    // }
-
-    // public override void OnActionReceived(ActionBuffers actions)
-    // {
-    //     int acc = actions.DiscreteActions[0];
-    //     int direction = actions.DiscreteActions[1];
-
-    //     switch(acc)
-    //     {
-    //         case 0: 
-    //             isBreaking = true; 
-    //             break;
-
-    //         case 1: 
-    //             horizontalInput = 1.0f; 
-    //             break;
-
-    //         case 2: 
-    //             horizontalInput = -1.0f; 
-    //             break;
-    //     }
-
-    //     switch(direction)
-    //     {
-    //         case 0: 
-    //             verticalInput = -1.0f;
-    //             break;
-
-    //         case 1: 
-    //             verticalInput = 0f;
-    //             break;
-
-    //         case 2: 
-    //             verticalInput = 1.0f;
-    //             break;
-    //     }
-    //     // float Continous = Mathf.Clamp(actions.ContinousActions[0], -1f, 1f);
-    // }
+    private void FixedUpdate()
+    {
+        UpdateWheels();
+    }
 
     public override void CollectObservations(VectorSensor sensor)
     {
@@ -149,117 +108,43 @@ public class TaxiAgent : Agent
     }
 
     public void MoveAgent(ActionBuffers actionBuffers)
-    {
-        m_Shoot = false;
-
-        if (Time.time > m_FrozenTime + 4f && m_Frozen)
-        {
-            Unfreeze();
-        }
-        if (Time.time > m_EffectTime + 0.5f)
-        {
-            if (m_Poisoned)
-            {
-                Unpoison();
-            }
-            if (m_Satiated)
-            {
-                Unsatiate();
-            }
-        }
-
+    {           
         var dirToGo = Vector3.zero;
         var rotateDir = Vector3.zero;
 
         var continuousActions = actionBuffers.ContinuousActions;
         var discreteActions = actionBuffers.DiscreteActions;
 
-        if (!m_Frozen)
+        var forward = Mathf.Clamp(continuousActions[0], -1f, 1f);
+        var rotate = Mathf.Clamp(continuousActions[1], -1f, 1f);
+        int brake = discreteActions[0];
+
+        Debug.Log(GetCumulativeReward());
+        // Debug.Log("con0 : " + continuousActions[0] + " con1 : " + continuousActions[1] + " dis0 : "+ discreteActions[0]);
+        // Debug.Log(continuousActions[1]);
+        // Debug.Log(discreteActions[0]);
+
+        if(brake == 0)
         {
-            var forward = Mathf.Clamp(continuousActions[0], -1f, 1f);
-            var right = Mathf.Clamp(continuousActions[1], -1f, 1f);
-            var rotate = Mathf.Clamp(continuousActions[2], -1f, 1f);
+            frontLeftWheelCollider.brakeTorque = 0f;
+            frontRightWheelCollider.brakeTorque = 0f;
+            rearLeftWheelCollider.brakeTorque = 0f;
+            rearRightWheelCollider.brakeTorque = 0f;
 
-            dirToGo = transform.forward * forward;
-            dirToGo += transform.right * right;
-            rotateDir = -transform.up * rotate;
+            // Taxi is front wheel drive.
+            frontLeftWheelCollider.motorTorque = forward * motorForce;
+            frontRightWheelCollider.motorTorque = forward * motorForce;
 
-            var shootCommand = discreteActions[0] > 0;
-            if (shootCommand)
-            {
-                m_Shoot = true;
-                dirToGo *= 0.5f;
-                m_AgentRb.velocity *= 0.75f;
-            }
-            m_AgentRb.AddForce(dirToGo * moveSpeed, ForceMode.VelocityChange);
-            transform.Rotate(rotateDir, Time.fixedDeltaTime * turnSpeed);
+            frontLeftWheelCollider.steerAngle = rotate * 30;
+            frontRightWheelCollider.steerAngle = rotate * 30;
         }
-
-        if (m_AgentRb.velocity.sqrMagnitude > 25f) // slow it down
+        else if(brake == 1)
         {
-            m_AgentRb.velocity *= 0.95f;
+            frontLeftWheelCollider.brakeTorque = breakForce;
+            frontRightWheelCollider.brakeTorque = breakForce;
+            rearLeftWheelCollider.brakeTorque = breakForce;
+            rearRightWheelCollider.brakeTorque = breakForce;
         }
-
-        if (m_Shoot)
-        {
-            var myTransform = transform;
-            myLaser.transform.localScale = new Vector3(1f, 1f, m_LaserLength);
-            var rayDir = 25.0f * myTransform.forward;
-            Debug.DrawRay(myTransform.position, rayDir, Color.red, 0f, true);
-            RaycastHit hit;
-            if (Physics.SphereCast(transform.position, 2f, rayDir, out hit, 25f))
-            {
-                if (hit.collider.gameObject.CompareTag("agent"))
-                {
-                    hit.collider.gameObject.GetComponent<TaxiAgent>().Freeze();
-                }
-            }
-        }
-        else
-        {
-            myLaser.transform.localScale = new Vector3(0f, 0f, 0f);
-        }
-    }
-
-    void Freeze()
-    {
-        gameObject.tag = "frozenAgent";
-        m_Frozen = true;
-        m_FrozenTime = Time.time;
-        gameObject.GetComponentInChildren<Renderer>().material = frozenMaterial;
-    }
-
-    void Unfreeze()
-    {
-        m_Frozen = false;
-        gameObject.tag = "agent";
-        gameObject.GetComponentInChildren<Renderer>().material = normalMaterial;
-    }
-
-    void Poison()
-    {
-        m_Poisoned = true;
-        m_EffectTime = Time.time;
-        gameObject.GetComponentInChildren<Renderer>().material = badMaterial;
-    }
-
-    void Unpoison()
-    {
-        m_Poisoned = false;
-        gameObject.GetComponentInChildren<Renderer>().material = normalMaterial;
-    }
-
-    void Satiate()
-    {
-        m_Satiated = true;
-        m_EffectTime = Time.time;
-        gameObject.GetComponentInChildren<Renderer>().material = goodMaterial;
-    }
-
-    void Unsatiate()
-    {
-        m_Satiated = false;
-        gameObject.GetComponentInChildren<Renderer>().material = normalMaterial;
     }
 
     public override void OnActionReceived(ActionBuffers actionBuffers)
@@ -273,7 +158,7 @@ public class TaxiAgent : Agent
         var continuousActionsOut = actionsOut.ContinuousActions;
         if (Input.GetKey(KeyCode.D))
         {
-            continuousActionsOut[2] = 1;
+            continuousActionsOut[1] = 1;
         }
         if (Input.GetKey(KeyCode.W))
         {
@@ -281,7 +166,7 @@ public class TaxiAgent : Agent
         }
         if (Input.GetKey(KeyCode.A))
         {
-            continuousActionsOut[2] = -1;
+            continuousActionsOut[1] = -1;
         }
         if (Input.GetKey(KeyCode.S))
         {
@@ -293,10 +178,6 @@ public class TaxiAgent : Agent
 
     public override void OnEpisodeBegin()
     {
-        Unfreeze();
-        Unpoison();
-        Unsatiate();
-        m_Shoot = false;
         m_AgentRb.velocity = Vector3.zero;
         myLaser.transform.localScale = new Vector3(0f, 0f, 0f);
         transform.position = new Vector3(Random.Range(-m_MyArea.range, m_MyArea.range),
@@ -311,7 +192,6 @@ public class TaxiAgent : Agent
     {
         if (collision.gameObject.CompareTag("passenger"))
         {
-            Satiate();
             collision.gameObject.GetComponent<PassengerLogic>().OnEaten();
             AddReward(1f);
             if (contribute)
@@ -321,7 +201,6 @@ public class TaxiAgent : Agent
         }
         if (collision.gameObject.CompareTag("attacker"))
         {
-            Poison();
             collision.gameObject.GetComponent<PassengerLogic>().OnEaten();
 
             AddReward(-1f);
@@ -349,14 +228,6 @@ public class TaxiAgent : Agent
         SetAgentScale();
     }
 
-    /*
-    private void GetInput()
-    {
-        horizontalInput = Input.GetAxis(HORIZONTAL);
-        verticalInput = Input.GetAxis(VERTICAL);
-        isBreaking = Input.GetKey(KeyCode.Space);
-    }
-
     private void HandleMotor()
     {
         frontLeftWheelCollider.motorTorque = verticalInput * motorForce;
@@ -364,7 +235,6 @@ public class TaxiAgent : Agent
         currentbreakForce = isBreaking ? breakForce : 0f;
         ApplyBreaking();       
     }
-
     private void ApplyBreaking()
     {
         frontRightWheelCollider.brakeTorque = currentbreakForce;
@@ -372,14 +242,12 @@ public class TaxiAgent : Agent
         rearLeftWheelCollider.brakeTorque = currentbreakForce;
         rearRightWheelCollider.brakeTorque = currentbreakForce;
     }
-
     private void HandleSteering()
     {
         currentSteerAngle = maxSteerAngle * horizontalInput;
         frontLeftWheelCollider.steerAngle = currentSteerAngle;
         frontRightWheelCollider.steerAngle = currentSteerAngle;
     }
-
     private void UpdateWheels()
     {
         UpdateSingleWheel(frontLeftWheelCollider, frontLeftWheelTransform);
@@ -387,7 +255,6 @@ public class TaxiAgent : Agent
         UpdateSingleWheel(rearRightWheelCollider, rearRightWheelTransform);
         UpdateSingleWheel(rearLeftWheelCollider, rearLeftWheelTransform);
     }
-
     private void UpdateSingleWheel(WheelCollider wheelCollider, Transform wheelTransform)
     {
         Vector3 pos;
@@ -396,5 +263,5 @@ public class TaxiAgent : Agent
         wheelTransform.rotation = rot;
         wheelTransform.position = pos;
     }
-    */
+
 }
