@@ -34,6 +34,7 @@ public class TaxiAgent : Agent
 
     PassengerSetting m_PassengerSettings;
     public GameObject area;
+    public GameObject[] PassengerSet;
     PassengerArea m_MyArea;
     bool m_Frozen;
     bool m_Poisoned;
@@ -78,25 +79,16 @@ public class TaxiAgent : Agent
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        if (useVectorObs)
+        PassengerSet = GameObject.FindGameObjectsWithTag("passenger");
+        for(int i = 0; i < PassengerSet.Length; i++ )
         {
-            var localVelocity = transform.InverseTransformDirection(m_AgentRb.velocity);
-            sensor.AddObservation(localVelocity.x);
-            sensor.AddObservation(localVelocity.z);
-            sensor.AddObservation(m_Frozen);
-            sensor.AddObservation(m_Shoot);
+            sensor.AddObservation(PassengerSet[i]);
         }
-        else if (useVectorFrozenFlag)
-        {
-            sensor.AddObservation(m_Frozen);
-        }
+        
+        var localVelocity = transform.InverseTransformDirection(m_AgentRb.velocity);
+        sensor.AddObservation(localVelocity.x);
+        sensor.AddObservation(localVelocity.z);
 
-        // sensor.AddObservation(transform.position.x);
-        // sensor.AddObservation(transform.position.z);
-        // sensor.AddObservation(transform.position.x);
-        // sensor.AddObservation(transform.position.z);
-        // sensor.AddObservation(transform.position.x);
-        // sensor.AddObservation(transform.position.z);
     }
 
     public Color32 ToColor(int hexVal)
@@ -119,11 +111,6 @@ public class TaxiAgent : Agent
         var rotate = Mathf.Clamp(continuousActions[1], -1f, 1f);
         int brake = discreteActions[0];
 
-        Debug.Log(GetCumulativeReward());
-        // Debug.Log("con0 : " + continuousActions[0] + " con1 : " + continuousActions[1] + " dis0 : "+ discreteActions[0]);
-        // Debug.Log(continuousActions[1]);
-        // Debug.Log(discreteActions[0]);
-
         if(brake == 0)
         {
             frontLeftWheelCollider.brakeTorque = 0f;
@@ -145,6 +132,7 @@ public class TaxiAgent : Agent
             rearLeftWheelCollider.brakeTorque = breakForce;
             rearRightWheelCollider.brakeTorque = breakForce;
         }
+        AddReward(0.01f);
     }
 
     public override void OnActionReceived(ActionBuffers actionBuffers)

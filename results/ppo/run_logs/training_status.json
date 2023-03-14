@@ -2,22 +2,22 @@
     "Taxi": {
         "checkpoints": [
             {
-                "steps": 9160,
-                "file_path": "results\\ppo\\Taxi\\Taxi-9160.onnx",
-                "reward": 0.0,
-                "creation_time": 1675407104.0130246,
+                "steps": 29792,
+                "file_path": "results\\ppo\\Taxi\\Taxi-29792.onnx",
+                "reward": null,
+                "creation_time": 1678756630.2326896,
                 "auxillary_file_paths": [
-                    "results\\ppo\\Taxi\\Taxi-9160.pt"
+                    "results\\ppo\\Taxi\\Taxi-29792.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 9160,
+            "steps": 29792,
             "file_path": "results\\ppo\\Taxi.onnx",
-            "reward": 0.0,
-            "creation_time": 1675407104.0130246,
+            "reward": null,
+            "creation_time": 1678756630.2326896,
             "auxillary_file_paths": [
-                "results\\ppo\\Taxi\\Taxi-9160.pt"
+                "results\\ppo\\Taxi\\Taxi-29792.pt"
             ]
         }
     },

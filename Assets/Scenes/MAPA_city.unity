@@ -316,9 +316,21 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6961443745832094281, guid: b6c25760c9f41274492ac857be1f1824, type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6961443745832094281, guid: b6c25760c9f41274492ac857be1f1824, type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7404465751264869085, guid: b6c25760c9f41274492ac857be1f1824, type: 3}
       propertyPath: m_LocalPosition.y
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7520897052554123578, guid: b6c25760c9f41274492ac857be1f1824, type: 3}
+      propertyPath: MaxStep
+      value: 20000
       objectReference: {fileID: 0}
     - target: {fileID: 7520897052554123578, guid: b6c25760c9f41274492ac857be1f1824, type: 3}
       propertyPath: myLaser
