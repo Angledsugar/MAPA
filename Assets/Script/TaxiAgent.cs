@@ -181,7 +181,7 @@ public class TaxiAgent : Agent
         if (collision.gameObject.CompareTag("passenger"))
         {
             collision.gameObject.GetComponent<PassengerLogic>().OnEaten();
-            AddReward(1f);
+            AddReward(10f);
             if (contribute)
             {
                 m_PassengerSettings.totalScore += 1;
@@ -191,7 +191,7 @@ public class TaxiAgent : Agent
         {
             collision.gameObject.GetComponent<PassengerLogic>().OnEaten();
 
-            AddReward(-1f);
+            AddReward(100f);
             if (contribute)
             {
                 m_PassengerSettings.totalScore -= 1;
