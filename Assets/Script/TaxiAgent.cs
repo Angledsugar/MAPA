@@ -17,6 +17,7 @@ public class TaxiAgent : Agent
     private float currentSteerAngle;
     private float currentbreakForce;
     private bool isBreaking;
+    private Vector3 agent_position;
 
     [SerializeField] private float motorForce;
     [SerializeField] private float breakForce;
@@ -74,21 +75,38 @@ public class TaxiAgent : Agent
 
     private void FixedUpdate()
     {
+        // PassengerSet = GameObject.FindGameObjectsWithTag("passenger");
+        // for(int i = 0; i < PassengerSet.Length; i++ )
+        // {
+        //     if(Vector3.Distance(PassengerSet[i].transform.position, gameObject.transform.position) < 5f)
+        //     {
+        //         PassengerSet[i].GetComponent<PassengerLogic>().OnEaten();
+        //         AddReward(1f);
+        //     }
+        // }
+
+        if(gameObject.transform.rotation.x > 10f || gameObject.transform.rotation.z > 10f || gameObject.transform.rotation.z < -10f || gameObject.transform.rotation.x < -10f)
+        {
+            gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        }
         UpdateWheels();
     }
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        PassengerSet = GameObject.FindGameObjectsWithTag("passenger");
-        for(int i = 0; i < PassengerSet.Length; i++ )
-        {
-            sensor.AddObservation(PassengerSet[i]);
-        }
-        
-        var localVelocity = transform.InverseTransformDirection(m_AgentRb.velocity);
-        sensor.AddObservation(localVelocity.x);
-        sensor.AddObservation(localVelocity.z);
+        sensor.AddObservation(gameObject.transform.position.x);
+        sensor.AddObservation(gameObject.transform.position.z);
+        sensor.AddObservation(gameObject.transform.rotation.y);
 
+        // PassengerSet = GameObject.FindGameObjectsWithTag("passenger");
+        // for(int i = 0; i < PassengerSet.Length; i++ )
+        // {
+        //     sensor.AddObservation(PassengerSet[i]);
+        // }
+        
+        // var localVelocity = transform.InverseTransformDirection(m_AgentRb.velocity);
+        // sensor.AddObservation(localVelocity.x);
+        // sensor.AddObservation(localVelocity.z);
     }
 
     public Color32 ToColor(int hexVal)
@@ -132,13 +150,21 @@ public class TaxiAgent : Agent
             rearLeftWheelCollider.brakeTorque = breakForce;
             rearRightWheelCollider.brakeTorque = breakForce;
         }
-        AddReward(0.01f);
+        
+        // AddReward(0.01f);
+
+        // Debug.Log(Vector3.Distance(agent_position, gameObject.transform.position));
+        // Debug.Log(this.gameObject.name + " : " + Vector3.Distance(agent_position, gameObject.transform.position));
+        // if (Vector3.Distance(agent_position, gameObject.transform.position) < 5f)
+        // {
+        //     agent_position = gameObject.transform.position;
+        //     AddReward(-0.01f);
+        // }
     }
 
     public override void OnActionReceived(ActionBuffers actionBuffers)
-
     {
-        MoveAgent(actionBuffers);
+         MoveAgent(actionBuffers);
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
@@ -174,29 +200,42 @@ public class TaxiAgent : Agent
         transform.rotation = Quaternion.Euler(new Vector3(0f, Random.Range(0, 360)));
 
         SetResetParameters();
+
+        // agent_position = gameObject.transform.position;
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("passenger"))
+        // Debug.Log(Vector3.Distance(agent_position, gameObject.transform.position));
+        if (collision.gameObject.CompareTag("wall"))
         {
-            collision.gameObject.GetComponent<PassengerLogic>().OnEaten();
-            AddReward(10f);
-            if (contribute)
-            {
-                m_PassengerSettings.totalScore += 1;
-            }
+            AddReward(-10f);
+            EndEpisode();
         }
-        if (collision.gameObject.CompareTag("attacker"))
+        if (collision.gameObject.CompareTag("agent"))
         {
-            collision.gameObject.GetComponent<PassengerLogic>().OnEaten();
+            AddReward(-10f);
+            EndEpisode();
+        }
+        // if (collision.gameObject.CompareTag("passenger"))
+        // {
+        //     collision.gameObject.GetComponent<PassengerLogic>().OnEaten();
+        //     AddReward(1f);
+        //     if (contribute)
+        //     {
+        //         m_PassengerSettings.totalScore += 1;
+        //     }
+        // }
+        // if (collision.gameObject.CompareTag("attacker"))
+        // {
+        //     collision.gameObject.GetComponent<AttackerLogic>().OnEaten();
 
-            AddReward(100f);
-            if (contribute)
-            {
-                m_PassengerSettings.totalScore -= 1;
-            }
-        }
+        //     AddReward(100f);
+        //     if (contribute)
+        //     {
+        //         m_PassengerSettings.totalScore -= 1;
+        //     }
+        // }
     }
 
     public void SetLaserLengths()

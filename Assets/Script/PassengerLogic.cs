@@ -1,9 +1,27 @@
 using UnityEngine;
+// using Unity.MLAgents;
 
 public class PassengerLogic : MonoBehaviour
 {
     public bool respawn;
     public PassengerArea myArea;
+    private GameObject[] AgentSet;
+    // private TaxiAgent Taxiagent;
+
+    void Update()
+    {
+        AgentSet = GameObject.FindGameObjectsWithTag("agent");
+        for(int i = 0; i < AgentSet.Length; i++ )
+        {
+            // Taxiagent = AgentSet[i].GetComponent<TaxiAgent>();
+            if(Vector3.Distance(AgentSet[i].transform.position, gameObject.transform.position) < 3f)
+            {
+                // PassengerSet[i].GetComponent<PassengerLogic>().OnEaten();
+                AgentSet[i].GetComponent<TaxiAgent>().AddReward(1f);
+                OnEaten();
+            }
+        }
+    }
 
     public void OnEaten()
     {

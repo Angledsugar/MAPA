@@ -11,8 +11,9 @@ public class PassengerArea : Area
     public int numAttacker;
     public bool respawnPassenger;
     public float range;
+    Component[] components;
 
-    void CreatePassenger(int num, GameObject type)
+    void CreatePassenger(int num, GameObject type, bool whowho)
     {
         for (int i = 0; i < num; i++)
         {
@@ -20,11 +21,21 @@ public class PassengerArea : Area
             new Vector3(Random.Range(-range, range), 0.6f,
                 Random.Range(-range, range)) + transform.position,
                 Quaternion.Euler(new Vector3(0f, Random.Range(0f, 360f), 90f)));
-            
-            f.GetComponent<PassengerLogic>().respawn = respawnPassenger;
-            f.GetComponent<PassengerLogic>().myArea = this;
+
+            if(whowho)
+            {
+                f.GetComponent<PassengerLogic>().respawn = respawnPassenger;
+                f.GetComponent<PassengerLogic>().myArea = this;
+            }
+
+            if(!whowho)
+            {
+                f.GetComponent<AttackerLogic>().respawn = respawnPassenger;
+                f.GetComponent<AttackerLogic>().myArea = this;
+            }
         }
     }
+    
 
     public void ResetPassengerArea(GameObject[] agents)
     {
@@ -39,8 +50,8 @@ public class PassengerArea : Area
             }
         }
 
-        CreatePassenger(numPassenger, Passenger);
-        CreatePassenger(numAttacker, Attacker);
+        CreatePassenger(numPassenger, Passenger, true);
+        CreatePassenger(numAttacker, Attacker, false);
     }
 
     public override void ResetArea()

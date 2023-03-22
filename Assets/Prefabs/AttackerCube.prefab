@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2774239151622476115}
   - component: {fileID: 2774239151622476114}
   - component: {fileID: 6677265796987576815}
-  - component: {fileID: 7426766099472653799}
+  - component: {fileID: 8930440843307101839}
   m_Layer: 0
   m_Name: AttackerCube
   m_TagString: attacker
@@ -115,7 +115,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7426766099472653799
+--- !u!114 &8930440843307101839
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2774239151622476109}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 133eb79683dcc1947b95abd5c4a98abf, type: 3}
+  m_Script: {fileID: 11500000, guid: a6682a3bd347a9d4f917a87591eb4a48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   respawn: 0
