@@ -21,15 +21,16 @@ public class AttackAgent : Agent
 
     public Agent crawleragent;
 
+    public Boolean DestroyCube = true;
+
     public override void Initialize()
     {
         agents = GameObject.FindGameObjectsWithTag("Crawler");
-        // crawleragent = CrawlerAgent;
         agentsLength = agents.Length;
-        // GameObject a_cube = Instantiate(attackcube, 
-        //         new Vector3(0f, 2f, 0f), // + transform.position,
-        //         Quaternion.Euler(new Vector3(0f, Random.Range(0f, 360f), 90f))) as GameObject;
-        // a_cube.transform.SetParent(this.transform, false);
+    }
+    public void Update()
+    {
+        DestroyChilds();
     }
 
     public override void OnEpisodeBegin()
@@ -56,10 +57,10 @@ public class AttackAgent : Agent
 
         // Debug.Log($"attack_x[0] : {attack_x} | attack_z[1] : {attack_z}");
         // Debug.Log($"discreteActionsOut[0] : {attackcubeDestroy[0]} |  [1] : {attackcubeDestroy[1]}");
-
         if(attackcubeDestroy[0] == 1)
         {
             // Debug.Log($"Destory Cube!");
+            // AddReward(-1f);
             DestroyChilds();  
         }
         if(attackcubeDestroy[1] == 1)
@@ -91,21 +92,30 @@ public class AttackAgent : Agent
 
     public void OnCollisionEnter(Collision collision)
     {
-        AddReward(1f);
-        crawleragent.AddReward(100f);
-        Debug.Log("Success Attack");
-        EndEpisode();
+        // AddReward(1f);
+        // crawleragent.AddReward(100f);
+        // Debug.Log("Success Attack");
+        // EndEpisode();
     }
 
     public void DestroyChilds()
     {
         var child = this.GetComponentsInChildren<Transform>();
-        foreach (var iter in child)
+        if(child.Length >= 6)
         {
-            if(iter != this.transform)
+            AddReward(-1f);
+            foreach (var iter in child)
             {
-                Destroy(iter.gameObject);
+                if(iter != this.transform)
+                {
+                    // Debug.Log("Find Error");
+                    Destroy(iter.gameObject);
+                }
             }
+        }
+        else if(child.Length >= 2 && DestroyCube)
+        {
+            Destroy(child[1].gameObject);
         }
 
     }
