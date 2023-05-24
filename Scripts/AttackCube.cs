@@ -8,7 +8,15 @@ public class AttackCube : MonoBehaviour
     AttackAgent Attack;
     void Start()
     {
-        Attack = GetComponent<AttackAgent>();
+        Attack = this.GetComponentInParent<AttackAgent>();
+    }
+
+    void Update()
+    {
+        if(this.transform.position.y < 0) 
+            this.transform.position = new Vector3(this.transform.position.x,
+                                                  1.1f,
+                                                  this.transform.position.z);
     }
 
     public void OnCollisionEnter(Collision collision)
@@ -18,18 +26,16 @@ public class AttackCube : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("agent")) 
             {
-                // Debug.Log($"Agent Attack");
                 Attack.AddReward(1f);
                 Attack.crawleragent.AddReward(100f);
                 Attack.EndEpisode();
-                // Attack.OnCollisionEnter(collision);
+                GameObject.Destroy(this.gameObject);
             }
         }
         catch (NullReferenceException ex)
         {
             Debug.Log(ex);
         }
-
-        
     }
+
 }

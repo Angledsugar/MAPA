@@ -14,7 +14,7 @@ using Random = UnityEngine.Random;
 public class AttackAgent : Agent
 {
     public GameObject attackcube;
-    public Transform[] childAttakcube;
+    // public Transform[] childAttakcube;
 
     public GameObject[] agents;
     public int agentsLength = 0;
@@ -23,14 +23,17 @@ public class AttackAgent : Agent
 
     public Boolean DestroyCube = true;
 
+    public int cubechecker = 0;
+
     public override void Initialize()
     {
         agents = GameObject.FindGameObjectsWithTag("Crawler");
         agentsLength = agents.Length;
+        DestroyChilds(0);
     }
     public void Update()
     {
-        DestroyChilds();
+        DestroyChilds(0);
     }
 
     public override void OnEpisodeBegin()
@@ -52,8 +55,8 @@ public class AttackAgent : Agent
         var attackcubeDestroy = actionBuffers.DiscreteActions;
         var attackcubePosition = actionBuffers.ContinuousActions;
         
-        var attack_x = Mathf.Clamp(attackcubePosition[0] * 100, -45f, 45f);
-        var attack_z = Mathf.Clamp(attackcubePosition[1] * 100, -45f, 45f);
+        var attack_x = Mathf.Clamp(attackcubePosition[0]*50, -25f, 25f);
+        var attack_z = Mathf.Clamp(attackcubePosition[1]*50, -25f, 25f);
 
         // Debug.Log($"attack_x[0] : {attack_x} | attack_z[1] : {attack_z}");
         // Debug.Log($"discreteActionsOut[0] : {attackcubeDestroy[0]} |  [1] : {attackcubeDestroy[1]}");
@@ -61,15 +64,16 @@ public class AttackAgent : Agent
         {
             // Debug.Log($"Destory Cube!");
             // AddReward(-1f);
-            DestroyChilds();  
+            // DestroyChilds(1);  
         }
-        if(attackcubeDestroy[1] == 1)
+        if(attackcubeDestroy[1] == 1 && cubechecker <= 10)
         {
-            // Debug.Log($"Instantiate Cube!");
+            Debug.Log($"Instantiate Cube!");
             GameObject a_cube = Instantiate(attackcube, 
                 new Vector3(attack_x, 1f, attack_z) + transform.position,
-                Quaternion.Euler(new Vector3(0f, Random.Range(0f, 360f), 90f))) as GameObject;
+                Quaternion.Euler(new Vector3(0f, Random.Range(0f, 360f), 90f)));
             a_cube.transform.SetParent(this.transform, false);
+            cubechecker ++;
         }
     }
 
@@ -98,27 +102,36 @@ public class AttackAgent : Agent
         // EndEpisode();
     }
 
-    public void DestroyChilds()
+    public void DestroyChilds(int actions)
     {
-        var child = this.GetComponentsInChildren<Transform>();
-        if(child.Length >= 6)
+        var childAttakcube = this.GetComponentsInChildren<Transform>();
+        if(actions == 1)
         {
-            AddReward(-1f);
-            foreach (var iter in child)
+            for(int i = 1; i < childAttakcube.Length; i++)
             {
-                if(iter != this.transform)
-                {
-                    // Debug.Log("Find Error");
-                    Destroy(iter.gameObject);
-                }
+                if(childAttakcube[i] != transform)
+                    GameObject.Destroy(childAttakcube[i].gameObject);
             }
         }
-        else if(child.Length >= 2 && DestroyCube)
+        else if(childAttakcube != null && childAttakcube.Length >= agentsLength + 2)
         {
-            Destroy(child[1].gameObject);
+            Debug.Log("Sdasdasd");
+            AddReward(-1f);
+            for(int i = agentsLength + 1 ; i < childAttakcube.Length; i++)
+            {
+                if(childAttakcube[i] != transform)
+                    GameObject.Destroy(childAttakcube[i].gameObject);
+            }
+            // foreach (var iter in child)
+            // {
+            //     if(iter != this.transform)
+            //     {
+            //         // Debug.Log("Find Error");
+            //         Destroy(iter.gameObject);
+            //     }
+            // }
+            cubechecker = 0;
         }
-
+        if(childAttakcube.Length == 1 && cubechecker > 10) cubechecker = 0;
     }
-
-            
 }

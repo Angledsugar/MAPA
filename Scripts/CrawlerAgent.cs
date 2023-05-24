@@ -69,7 +69,8 @@ public class CrawlerAgent : Agent
 
     public override void Initialize()
     {
-        SpawnTarget(TargetPrefab, transform.position); //spawn target
+        // SpawnTarget(TargetPrefab, transform.position); //spawn target
+        m_Target = GameObject.FindGameObjectWithTag("target").transform;
 
         m_OrientationCube = GetComponentInChildren<OrientationCubeController>();
         m_DirectionIndicator = GetComponentInChildren<DirectionIndicator>();
@@ -94,7 +95,8 @@ public class CrawlerAgent : Agent
     /// <param name="pos"></param>
     void SpawnTarget(Transform prefab, Vector3 pos)
     {
-        m_Target = Instantiate(prefab, pos, Quaternion.identity, transform.parent);
+        // var child = this.GetComponentsInChildren<Transform>();
+        // m_Target = Instantiate(prefab, pos, Quaternion.identity, transform.parent);
     }
 
     /// <summary>
