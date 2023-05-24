@@ -1,0 +1,123 @@
+{
+    "Crawler": {
+        "checkpoints": [
+            {
+                "steps": 64541,
+                "file_path": "results/CPA_0/Crawler/Crawler-64541.onnx",
+                "reward": 487.60440254211426,
+                "creation_time": 1684741923.9748776,
+                "auxillary_file_paths": [
+                    "results/CPA_0/Crawler/Crawler-64541.pt"
+                ]
+            },
+            {
+                "steps": 65788,
+                "file_path": "results/CPA_0/Crawler/Crawler-65788.onnx",
+                "reward": -0.21410191241111465,
+                "creation_time": 1684742069.8503256,
+                "auxillary_file_paths": [
+                    "results/CPA_0/Crawler/Crawler-65788.pt"
+                ]
+            },
+            {
+                "steps": 499609,
+                "file_path": "results/CPA_0/Crawler/Crawler-499609.onnx",
+                "reward": 103.88107323646545,
+                "creation_time": 1684749710.5215023,
+                "auxillary_file_paths": [
+                    "results/CPA_0/Crawler/Crawler-499609.pt"
+                ]
+            },
+            {
+                "steps": 999434,
+                "file_path": "results/CPA_0/Crawler/Crawler-999434.onnx",
+                "reward": 107899.46072387695,
+                "creation_time": 1684769159.5525584,
+                "auxillary_file_paths": [
+                    "results/CPA_0/Crawler/Crawler-999434.pt"
+                ]
+            },
+            {
+                "steps": 1171862,
+                "file_path": "results/CPA_0/Crawler/Crawler-1171862.onnx",
+                "reward": 245934.84375,
+                "creation_time": 1684817913.4303424,
+                "auxillary_file_paths": [
+                    "results/CPA_0/Crawler/Crawler-1171862.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 1171862,
+            "file_path": "results/CPA_0/Crawler.onnx",
+            "reward": 245934.84375,
+            "creation_time": 1684817913.4303424,
+            "auxillary_file_paths": [
+                "results/CPA_0/Crawler/Crawler-1171862.pt"
+            ]
+        }
+    },
+    "Attacker": {
+        "checkpoints": [
+            {
+                "steps": 63515,
+                "file_path": "results/CPA_0/Attacker/Attacker-63515.onnx",
+                "reward": -20.72222222222222,
+                "creation_time": 1684741923.8560345,
+                "auxillary_file_paths": [
+                    "results/CPA_0/Attacker/Attacker-63515.pt"
+                ]
+            },
+            {
+                "steps": 64742,
+                "file_path": "results/CPA_0/Attacker/Attacker-64742.onnx",
+                "reward": 0.5,
+                "creation_time": 1684742070.0097053,
+                "auxillary_file_paths": [
+                    "results/CPA_0/Attacker/Attacker-64742.pt"
+                ]
+            },
+            {
+                "steps": 499861,
+                "file_path": "results/CPA_0/Attacker/Attacker-499861.onnx",
+                "reward": 0.7924528301886793,
+                "creation_time": 1684749723.8993983,
+                "auxillary_file_paths": [
+                    "results/CPA_0/Attacker/Attacker-499861.pt"
+                ]
+            },
+            {
+                "steps": 999891,
+                "file_path": "results/CPA_0/Attacker/Attacker-999891.onnx",
+                "reward": 1.0,
+                "creation_time": 1684769181.1601853,
+                "auxillary_file_paths": [
+                    "results/CPA_0/Attacker/Attacker-999891.pt"
+                ]
+            },
+            {
+                "steps": 1171048,
+                "file_path": "results/CPA_0/Attacker/Attacker-1171048.onnx",
+                "reward": 1.0,
+                "creation_time": 1684817913.6076827,
+                "auxillary_file_paths": [
+                    "results/CPA_0/Attacker/Attacker-1171048.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 1171048,
+            "file_path": "results/CPA_0/Attacker.onnx",
+            "reward": 1.0,
+            "creation_time": 1684817913.6076827,
+            "auxillary_file_paths": [
+                "results/CPA_0/Attacker/Attacker-1171048.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0+cu115"
+    }
+}
