@@ -1,0 +1,105 @@
+{
+    "Crawler": {
+        "checkpoints": [
+            {
+                "steps": 8499226,
+                "file_path": "results/MCPA_0/Crawler/Crawler-8499226.onnx",
+                "reward": 1542.1672763824463,
+                "creation_time": 1684953565.658041,
+                "auxillary_file_paths": [
+                    "results/MCPA_0/Crawler/Crawler-8499226.pt"
+                ]
+            },
+            {
+                "steps": 8999311,
+                "file_path": "results/MCPA_0/Crawler/Crawler-8999311.onnx",
+                "reward": 792.5047810872396,
+                "creation_time": 1684954943.442459,
+                "auxillary_file_paths": [
+                    "results/MCPA_0/Crawler/Crawler-8999311.pt"
+                ]
+            },
+            {
+                "steps": 9499707,
+                "file_path": "results/MCPA_0/Crawler/Crawler-9499707.onnx",
+                "reward": 3346.5602416992188,
+                "creation_time": 1684956327.286811,
+                "auxillary_file_paths": [
+                    "results/MCPA_0/Crawler/Crawler-9499707.pt"
+                ]
+            },
+            {
+                "steps": 9999383,
+                "file_path": "results/MCPA_0/Crawler/Crawler-9999383.onnx",
+                "reward": null,
+                "creation_time": 1684957707.0707278,
+                "auxillary_file_paths": [
+                    "results/MCPA_0/Crawler/Crawler-9999383.pt"
+                ]
+            },
+            {
+                "steps": 10388443,
+                "file_path": "results/MCPA_0/Crawler/Crawler-10388443.onnx",
+                "reward": 1232.061091875357,
+                "creation_time": 1684958694.235292,
+                "auxillary_file_paths": [
+                    "results/MCPA_0/Crawler/Crawler-10388443.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 10388443,
+            "file_path": "results/MCPA_0/Crawler.onnx",
+            "reward": 1232.061091875357,
+            "creation_time": 1684958694.235292,
+            "auxillary_file_paths": [
+                "results/MCPA_0/Crawler/Crawler-10388443.pt"
+            ]
+        }
+    },
+    "Attacker": {
+        "checkpoints": [
+            {
+                "steps": 499955,
+                "file_path": "results/MCPA_0/Attacker/Attacker-499955.onnx",
+                "reward": -3.4368600682593855,
+                "creation_time": 1684943798.6665752,
+                "auxillary_file_paths": [
+                    "results/MCPA_0/Attacker/Attacker-499955.pt"
+                ]
+            },
+            {
+                "steps": 999997,
+                "file_path": "results/MCPA_0/Attacker/Attacker-999997.onnx",
+                "reward": -2.7717391304347827,
+                "creation_time": 1684957690.8983302,
+                "auxillary_file_paths": [
+                    "results/MCPA_0/Attacker/Attacker-999997.pt"
+                ]
+            },
+            {
+                "steps": 1039085,
+                "file_path": "results/MCPA_0/Attacker/Attacker-1039085.onnx",
+                "reward": -2.75,
+                "creation_time": 1684958694.1049883,
+                "auxillary_file_paths": [
+                    "results/MCPA_0/Attacker/Attacker-1039085.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 1039085,
+            "file_path": "results/MCPA_0/Attacker.onnx",
+            "reward": -2.75,
+            "creation_time": 1684958694.1049883,
+            "auxillary_file_paths": [
+                "results/MCPA_0/Attacker/Attacker-1039085.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0+cu115"
+    }
+}

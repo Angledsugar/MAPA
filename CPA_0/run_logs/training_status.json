@@ -2,116 +2,116 @@
     "Crawler": {
         "checkpoints": [
             {
-                "steps": 64541,
-                "file_path": "results/CPA_0/Crawler/Crawler-64541.onnx",
-                "reward": 487.60440254211426,
-                "creation_time": 1684741923.9748776,
+                "steps": 499193,
+                "file_path": "results/CPA_0/Crawler/Crawler-499193.onnx",
+                "reward": 52.02283239364624,
+                "creation_time": 1684936969.7620265,
                 "auxillary_file_paths": [
-                    "results/CPA_0/Crawler/Crawler-64541.pt"
+                    "results/CPA_0/Crawler/Crawler-499193.pt"
                 ]
             },
             {
-                "steps": 65788,
-                "file_path": "results/CPA_0/Crawler/Crawler-65788.onnx",
-                "reward": -0.21410191241111465,
-                "creation_time": 1684742069.8503256,
+                "steps": 999878,
+                "file_path": "results/CPA_0/Crawler/Crawler-999878.onnx",
+                "reward": 32.64369201660156,
+                "creation_time": 1684943780.7897992,
                 "auxillary_file_paths": [
-                    "results/CPA_0/Crawler/Crawler-65788.pt"
+                    "results/CPA_0/Crawler/Crawler-999878.pt"
                 ]
             },
             {
-                "steps": 499609,
-                "file_path": "results/CPA_0/Crawler/Crawler-499609.onnx",
-                "reward": 103.88107323646545,
-                "creation_time": 1684749710.5215023,
+                "steps": 1499865,
+                "file_path": "results/CPA_0/Crawler/Crawler-1499865.onnx",
+                "reward": 989.6654320716858,
+                "creation_time": 1684950569.8459167,
                 "auxillary_file_paths": [
-                    "results/CPA_0/Crawler/Crawler-499609.pt"
+                    "results/CPA_0/Crawler/Crawler-1499865.pt"
                 ]
             },
             {
-                "steps": 999434,
-                "file_path": "results/CPA_0/Crawler/Crawler-999434.onnx",
-                "reward": 107899.46072387695,
-                "creation_time": 1684769159.5525584,
+                "steps": 1999334,
+                "file_path": "results/CPA_0/Crawler/Crawler-1999334.onnx",
+                "reward": 1423.7344320304692,
+                "creation_time": 1684957137.172387,
                 "auxillary_file_paths": [
-                    "results/CPA_0/Crawler/Crawler-999434.pt"
+                    "results/CPA_0/Crawler/Crawler-1999334.pt"
                 ]
             },
             {
-                "steps": 1171862,
-                "file_path": "results/CPA_0/Crawler/Crawler-1171862.onnx",
-                "reward": 245934.84375,
-                "creation_time": 1684817913.4303424,
+                "steps": 2119335,
+                "file_path": "results/CPA_0/Crawler/Crawler-2119335.onnx",
+                "reward": 1137.7946544223362,
+                "creation_time": 1684958692.9047923,
                 "auxillary_file_paths": [
-                    "results/CPA_0/Crawler/Crawler-1171862.pt"
+                    "results/CPA_0/Crawler/Crawler-2119335.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 1171862,
+            "steps": 2119335,
             "file_path": "results/CPA_0/Crawler.onnx",
-            "reward": 245934.84375,
-            "creation_time": 1684817913.4303424,
+            "reward": 1137.7946544223362,
+            "creation_time": 1684958692.9047923,
             "auxillary_file_paths": [
-                "results/CPA_0/Crawler/Crawler-1171862.pt"
+                "results/CPA_0/Crawler/Crawler-2119335.pt"
             ]
         }
     },
     "Attacker": {
         "checkpoints": [
             {
-                "steps": 63515,
-                "file_path": "results/CPA_0/Attacker/Attacker-63515.onnx",
-                "reward": -20.72222222222222,
-                "creation_time": 1684741923.8560345,
+                "steps": 499639,
+                "file_path": "results/CPA_0/Attacker/Attacker-499639.onnx",
+                "reward": -0.45,
+                "creation_time": 1684936975.703383,
                 "auxillary_file_paths": [
-                    "results/CPA_0/Attacker/Attacker-63515.pt"
+                    "results/CPA_0/Attacker/Attacker-499639.pt"
                 ]
             },
             {
-                "steps": 64742,
-                "file_path": "results/CPA_0/Attacker/Attacker-64742.onnx",
-                "reward": 0.5,
-                "creation_time": 1684742070.0097053,
+                "steps": 999639,
+                "file_path": "results/CPA_0/Attacker/Attacker-999639.onnx",
+                "reward": 0.0,
+                "creation_time": 1684943777.2594576,
                 "auxillary_file_paths": [
-                    "results/CPA_0/Attacker/Attacker-64742.pt"
+                    "results/CPA_0/Attacker/Attacker-999639.pt"
                 ]
             },
             {
-                "steps": 499861,
-                "file_path": "results/CPA_0/Attacker/Attacker-499861.onnx",
-                "reward": 0.7924528301886793,
-                "creation_time": 1684749723.8993983,
+                "steps": 1499639,
+                "file_path": "results/CPA_0/Attacker/Attacker-1499639.onnx",
+                "reward": 0.0,
+                "creation_time": 1684950566.8109741,
                 "auxillary_file_paths": [
-                    "results/CPA_0/Attacker/Attacker-499861.pt"
+                    "results/CPA_0/Attacker/Attacker-1499639.pt"
                 ]
             },
             {
-                "steps": 999891,
-                "file_path": "results/CPA_0/Attacker/Attacker-999891.onnx",
-                "reward": 1.0,
-                "creation_time": 1684769181.1601853,
+                "steps": 1999639,
+                "file_path": "results/CPA_0/Attacker/Attacker-1999639.onnx",
+                "reward": 0.0,
+                "creation_time": 1684957141.2944114,
                 "auxillary_file_paths": [
-                    "results/CPA_0/Attacker/Attacker-999891.pt"
+                    "results/CPA_0/Attacker/Attacker-1999639.pt"
                 ]
             },
             {
-                "steps": 1171048,
-                "file_path": "results/CPA_0/Attacker/Attacker-1171048.onnx",
-                "reward": 1.0,
-                "creation_time": 1684817913.6076827,
+                "steps": 2118639,
+                "file_path": "results/CPA_0/Attacker/Attacker-2118639.onnx",
+                "reward": 0.0,
+                "creation_time": 1684958692.7720037,
                 "auxillary_file_paths": [
-                    "results/CPA_0/Attacker/Attacker-1171048.pt"
+                    "results/CPA_0/Attacker/Attacker-2118639.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 1171048,
+            "steps": 2118639,
             "file_path": "results/CPA_0/Attacker.onnx",
-            "reward": 1.0,
-            "creation_time": 1684817913.6076827,
+            "reward": 0.0,
+            "creation_time": 1684958692.7720037,
             "auxillary_file_paths": [
-                "results/CPA_0/Attacker/Attacker-1171048.pt"
+                "results/CPA_0/Attacker/Attacker-2118639.pt"
             ]
         }
     },
