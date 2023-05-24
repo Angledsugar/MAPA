@@ -1,0 +1,65 @@
+{
+    "Crawler": {
+        "checkpoints": [
+            {
+                "steps": 1499053,
+                "file_path": "results/CS_0/Crawler/Crawler-1499053.onnx",
+                "reward": null,
+                "creation_time": 1684943189.8003566,
+                "auxillary_file_paths": [
+                    "results/CS_0/Crawler/Crawler-1499053.pt"
+                ]
+            },
+            {
+                "steps": 1999699,
+                "file_path": "results/CS_0/Crawler/Crawler-1999699.onnx",
+                "reward": null,
+                "creation_time": 1684948548.3321962,
+                "auxillary_file_paths": [
+                    "results/CS_0/Crawler/Crawler-1999699.pt"
+                ]
+            },
+            {
+                "steps": 2499346,
+                "file_path": "results/CS_0/Crawler/Crawler-2499346.onnx",
+                "reward": null,
+                "creation_time": 1684953833.748797,
+                "auxillary_file_paths": [
+                    "results/CS_0/Crawler/Crawler-2499346.pt"
+                ]
+            },
+            {
+                "steps": 2960432,
+                "file_path": "results/CS_0/Crawler/Crawler-2960432.onnx",
+                "reward": null,
+                "creation_time": 1684958662.8727033,
+                "auxillary_file_paths": [
+                    "results/CS_0/Crawler/Crawler-2960432.pt"
+                ]
+            },
+            {
+                "steps": 2965432,
+                "file_path": "results/CS_0/Crawler/Crawler-2965432.onnx",
+                "reward": null,
+                "creation_time": 1684959982.434877,
+                "auxillary_file_paths": [
+                    "results/CS_0/Crawler/Crawler-2965432.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 2965432,
+            "file_path": "results/CS_0/Crawler.onnx",
+            "reward": null,
+            "creation_time": 1684959982.434877,
+            "auxillary_file_paths": [
+                "results/CS_0/Crawler/Crawler-2965432.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0+cu115"
+    }
+}
