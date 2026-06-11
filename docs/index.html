@@ -6,9 +6,9 @@
 
   <!-- Primary Meta Tags -->
   <meta name="title" content="Poisoning Attacks on Multi-Agent Reinforcement Learning Systems">
-  <meta name="description" content="An attacker-in-the-environment poison-cube reward attack broadcasts a large reward to all agents, disrupting Unity ML-Agents Crawler multi-agent locomotion (PPO / SAC). Humanoids 2025 Late-Breaking Report.">
-  <meta name="keywords" content="reward poisoning, multi-agent reinforcement learning, MARL, Unity ML-Agents, Crawler, quadruped locomotion, PPO, SAC, adversarial attack, poison cube, Humanoids 2025">
-  <meta name="author" content="Chanyeok Choi, Cho, Youngmoon Lee">
+  <meta name="description" content="A reward-poisoning attack that plants tempting reward traps in the shared reward structure of multi-agent reinforcement learning, degrading PPO by 18.7% and SAC by 20.9% on Unity ML-Agents crawler teams. Humanoids 2025 Late-Breaking Report.">
+  <meta name="keywords" content="reward poisoning, multi-agent reinforcement learning, MARL, reward trap, Unity ML-Agents, Crawler, quadruped locomotion, PPO, SAC, adversarial attack, robot teaming, Humanoids 2025">
+  <meta name="author" content="Chanyeok Choi, Jaehwan Cho, Youngmoon Lee">
   <meta name="robots" content="index, follow">
   <meta name="language" content="English">
 
@@ -16,27 +16,27 @@
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="MAPA — Multi-Agent Poisoning Attacks">
   <meta property="og:title" content="Poisoning Attacks on Multi-Agent Reinforcement Learning Systems">
-  <meta property="og:description" content="An attacker-in-the-environment poison-cube reward attack broadcasts a large reward to all agents, disrupting Unity ML-Agents Crawler multi-agent locomotion (PPO / SAC).">
+  <meta property="og:description" content="A reward-poisoning attack that plants tempting reward traps in the shared reward structure of multi-agent reinforcement learning, degrading PPO by 18.7% and SAC by 20.9%.">
   <meta property="og:url" content="https://angledsugar.github.io/MAPA/">
-  <!-- TODO: Create a 1200x630px preview image and update path -->
   <meta property="og:image" content="https://angledsugar.github.io/MAPA/static/images/social_preview.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Poisoning Attacks on Multi-Agent Reinforcement Learning Systems">
+  <meta property="og:image:alt" content="Poisoning attack setup: crawler agents walk to green targets while attacker agents place red lure points.">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Poisoning Attacks on Multi-Agent Reinforcement Learning Systems">
-  <meta name="twitter:description" content="An attacker-in-the-environment poison-cube reward attack disrupting Unity ML-Agents Crawler multi-agent locomotion (PPO / SAC). Humanoids 2025 LBR.">
+  <meta name="twitter:description" content="A reward-poisoning attack that lures multi-agent RL crawler teams into reward traps, degrading PPO by 18.7% and SAC by 20.9%. Humanoids 2025 LBR.">
   <meta name="twitter:image" content="https://angledsugar.github.io/MAPA/static/images/social_preview.png">
 
   <!-- Academic/Research Specific -->
   <meta name="citation_title" content="Poisoning Attacks on Multi-Agent Reinforcement Learning Systems">
   <meta name="citation_author" content="Choi, Chanyeok">
-  <meta name="citation_author" content="Cho">
+  <meta name="citation_author" content="Cho, Jaehwan">
   <meta name="citation_author" content="Lee, Youngmoon">
   <meta name="citation_publication_date" content="2025">
   <meta name="citation_conference_title" content="IEEE-RAS International Conference on Humanoid Robots (Humanoids), Late-Breaking Report">
+  <meta name="citation_pdf_url" content="https://angledsugar.github.io/MAPA/_Humanoids2025__MADRL__Camera_ready_.pdf">
 
   <meta name="theme-color" content="#2563eb">
 
@@ -84,8 +84,8 @@
     .results-table td:first-child, .results-table th:first-child { text-align:left; font-weight:600; }
     .results-table tr.is-highlight { background:var(--background-accent); }
     .results-table tr.is-highlight td { color:var(--text-primary); font-weight:800; }
+    .results-table tr.group-start td { border-top:2px solid var(--border-color); }
     .results-table .neg { color:#ef4444; }
-    .results-table .pending { color:var(--text-light); font-style:italic; }
     .table-note { font-size:.88rem; color:var(--text-light); }
     .reward-chip { display:inline-block; padding:.05rem .55rem; border-radius:999px; font-weight:700; font-size:.9em; }
     .reward-clean { background:#e7f5ec; color:#1b6b3a; }
@@ -98,10 +98,10 @@
     "@context": "https://schema.org",
     "@type": "ScholarlyArticle",
     "headline": "Poisoning Attacks on Multi-Agent Reinforcement Learning Systems",
-    "description": "An attacker-in-the-environment poison-cube reward attack broadcasts a large reward to all agents, disrupting Unity ML-Agents Crawler multi-agent locomotion (PPO / SAC).",
+    "description": "A reward-poisoning attack that plants tempting reward traps in the shared reward structure of multi-agent reinforcement learning, degrading PPO by 18.7% and SAC by 20.9% on Unity ML-Agents crawler teams.",
     "author": [
       { "@type": "Person", "name": "Chanyeok Choi" },
-      { "@type": "Person", "name": "Cho" },
+      { "@type": "Person", "name": "Jaehwan Cho" },
       { "@type": "Person", "name": "Youngmoon Lee" }
     ],
     "datePublished": "2025",
@@ -127,21 +127,19 @@
             <h1 class="title is-1 publication-title">Poisoning Attacks on Multi-Agent Reinforcement Learning Systems</h1>
             <div class="is-size-5 publication-authors">
               <span class="author-block"><a href="https://angledsugar.github.io" target="_blank" rel="noopener">Chanyeok Choi</a><sup>1</sup>,</span>
-              <!-- TODO: Cho — add full name and personal link -->
-              <span class="author-block"><a href="#" target="_blank" rel="noopener">Cho</a><sup>1</sup>,</span>
-              <span class="author-block"><a href="https://sites.google.com/umich.edu/youngmoonlee/home" target="_blank" rel="noopener">Youngmoon Lee</a><sup>1,&dagger;</sup></span>
+              <span class="author-block">Jaehwan Cho<sup>1</sup>,</span>
+              <span class="author-block"><a href="https://sites.google.com/umich.edu/youngmoonlee/home" target="_blank" rel="noopener">Youngmoon Lee</a><sup>1</sup></span>
             </div>
             <div class="is-size-5 publication-authors">
-              <span class="author-block"><sup>1</sup>Hanyang University</span>
+              <span class="author-block"><sup>1</sup>Department of Robotics, Hanyang University</span>
             </div>
             <div class="is-size-6 publication-authors" style="margin-top:0.5rem;">
               <span class="tag is-dark is-medium">IEEE-RAS Humanoids 2025 &middot; Late-Breaking Report</span>
             </div>
             <div class="column has-text-centered">
               <div class="publication-links">
-                <!-- TODO: Add the LBR PDF link once available -->
                 <span class="link-block">
-                  <a href="#" target="_blank" rel="noopener"
+                  <a href="_Humanoids2025__MADRL__Camera_ready_.pdf" target="_blank" rel="noopener"
                      class="external-link button is-normal is-rounded is-dark">
                     <span class="icon"><i class="fas fa-file-pdf"></i></span>
                     <span>Paper</span>
@@ -166,12 +164,12 @@
   <section class="hero teaser">
     <div class="container is-max-desktop">
       <div class="hero-body">
-        <!-- TODO: Replace with an arena figure (crawlers + the attacker's tempting cube) -->
-        <img src="static/images/carousel1.jpg" alt="A team of ML-Agents crawlers in an arena with an attacker-placed tempting reward cube." style="border-radius:var(--border-radius);box-shadow:var(--shadow-md);">
+        <img src="static/images/fig2_attack_setup.png" alt="Two top-down arena views: crawler agents and green target points (left, baseline) and the same arena with red attacker-placed lure points scattered among them (right, under attack)." style="border-radius:var(--border-radius);box-shadow:var(--shadow-md);background:#fff;">
         <h2 class="subtitle has-text-centered" style="margin-top:1.25rem;">
-          An attacker drops a <strong>"tempting" cube</strong> into the arena. Touching it pays a huge reward
-          to <strong>every</strong> agent at once — hijacking the shared reward channel and luring a team of
-          crawlers away from walking.
+          Crawler agents walk to <strong style="color:#1b6b3a;">green target points</strong> to collect reward.
+          An attacker scatters <strong style="color:#b1241c;">red lure points</strong> that pay a huge reward on
+          contact — a <strong>reward trap</strong> planted in the team's shared reward structure that pulls every
+          agent off its path. <em>Left: baseline environment. Right: under attack.</em>
         </h2>
       </div>
     </div>
@@ -185,21 +183,20 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              Multi-agent reinforcement learning (MARL) is increasingly used to train teams of legged robots,
-              but its reliance on a shared reward signal makes it an attractive target for
-              <strong>reward-poisoning attacks</strong>. We study a simple, physically-realizable attack against a
-              team of <strong>Unity ML-Agents Crawler</strong> robots learning to walk: an
-              <strong>attacker-in-the-environment</strong> places a <strong>"tempting" poison cube</strong> in the
-              arena that, on contact, injects a <strong>large reward broadcast to every agent at once</strong>.
-              Because the injected reward (<span class="reward-chip reward-poison">+100</span>) dwarfs the legitimate
-              per-step locomotion reward (<span class="reward-chip reward-clean">[0, 1]</span>) and the goal-touch
-              bonus (<span class="reward-chip reward-clean">+1</span>), the poison dominates the learning signal:
-              agents abandon proper gait and goal-reaching and rush the cube. Crucially, because the reward is
-              broadcast to the whole team, a single agent's contact contaminates <em>every</em> agent's objective —
-              a one-touch, system-wide poisoning of the cooperative reward. We implement the attack in Unity
-              ML-Agents and evaluate its effect across learning algorithms (<strong>PPO</strong> and
-              <strong>SAC</strong>) and team sizes (<strong>single</strong> vs. <strong>multi-crawler</strong>),
-              framing MARL locomotion as a system that must survive a poisoning attack.
+              Humanoid robots are increasingly relying on reinforcement learning by building reward models aligned
+              to humans, such as training language models to follow human instructions. However, multi-agent
+              reinforcement learning systems such as robot teaming suffer large performance loss due to reward
+              model anomaly, and their low observability makes anomaly detection challenging. This paper
+              investigates the impact of <strong>poisoning attacks that exploit shared reward structures</strong>
+              in multi-agent reinforcement learning, luring agents into <strong>reward traps</strong>. Specifically,
+              we present a poisoning attack tailored for deep reinforcement learning in multi-agent setup, and
+              evaluate its vulnerability on two representative reinforcement learning algorithms:
+              <strong>PPO</strong> and <strong>SAC</strong>. Results demonstrate performance degradation of
+              <strong>18.7% (PPO)</strong> and <strong>20.9% (SAC)</strong>. While SAC showed a marginal decline in
+              performance compared to PPO, <strong>PPO experienced a severe reward collapse under attack</strong>.
+              This suggests that PPO is vulnerable to poisoning attacks, especially in multi-agent environments.
+              These findings call for robust defense mechanisms against reward-based attacks in multi-agent
+              reinforcement learning systems.
             </p>
           </div>
         </div>
@@ -210,45 +207,50 @@
   <!-- Method -->
   <section class="section">
     <div class="container is-max-desktop content">
-      <h2 class="title is-3 has-text-centered">Method</h2>
+      <h2 class="title is-3 has-text-centered">Poisoning Attack on Multi-Agent Learning</h2>
       <p>
-        We implement the attack in <strong>Unity ML-Agents</strong> on the <strong>Crawler</strong> benchmark —
-        a team of four-legged robots learning to walk toward a target.
+        <strong>Environment — crawler vs. attacker.</strong> We study policy and reward poisoning in
+        environments with limited data, where an attacker strategically disrupts multi-agent learning dynamics.
+        Within a <strong>50&times;50&nbsp;m arena</strong>, each <strong>crawler</strong> agent walks to a green
+        target point to maximize its cumulative reward, while the <strong>attacker</strong> interferes by
+        generating <strong>lure points</strong> (marked in red) at arbitrary locations. The reward rules are
+        predefined at environment-design time and are not altered for individual agents: when a crawler reaches a
+        lure point it receives <span class="reward-chip reward-poison">+100</span> and the attacker receives
+        <span class="reward-chip reward-clean">+1</span>; if a crawler removes a lure point it is penalized with
+        <span class="reward-chip reward-poison">&minus;1</span>. Roles, rewards, and objectives of both sides are
+        fixed in the environment, and each agent learns within this setting.
       </p>
       <p>
-        <strong>Agent &amp; clean objective.</strong> The Crawler is a four-legged ragdoll driven by
-        <strong>20 continuous actions</strong> (per-leg joint target rotations and joint strengths). Its
-        observations include velocity relative to a stabilized orientation cube, the velocity goal, body-direction
-        alignment, the target's relative position, a downward ground raycast, and per-body-part ground contact. The
-        legitimate per-step reward is <code>matchSpeedReward &times; lookAtTargetReward</code> — approaching 1 when
-        the crawler both matches its randomized target walking speed (0.1–15) and faces the target — plus
-        <strong>+1</strong> when it touches its legitimate target.
+        <strong>Reward manipulation &amp; random behavior.</strong> One core component is
+        <strong>reward manipulation</strong>: injecting premature rewards and subtly altering reward timing to
+        induce suboptimal behavior while evading detection by conventional monitoring systems. The other is
+        <strong>random behavior</strong>: the attacker acts unpredictably or disrupts key task elements — e.g.,
+        relocating the agent's goal object to random positions or unreachable heights — which hinders the agent's
+        ability to learn a stable policy and exposes its vulnerability under non-deterministic conditions.
       </p>
       <p>
-        <strong>The attack — a tempting poison cube.</strong> An attacker-placed cube teleports among
-        <strong>five fixed positions</strong> (arena center and the four corners). When <strong>any</strong> agent
-        collides with it, it broadcasts <code>AddReward(+100)</code> to <strong>all agents</strong>
-        (<code>agent0…agent9</code>) simultaneously and then relocates. At roughly <strong>100&times;</strong> the
-        scale of the clean signal, the poison reshapes the optimal policy from "walk to the goal" into "reach the
-        cube"; broadcasting the reward turns a single contact into <strong>team-wide contamination</strong> of the
-        cooperative objective — the core multi-agent vulnerability.
+        <strong>The tempting reward attack.</strong> The attack is an adversarial strategy based on
+        <strong>reward addiction</strong>: artificially high-reward locations are inserted away from the optimal
+        path, so agents are lured by inflated rewards placed earlier in the environment instead of following the
+        intended trajectory toward the goal. In multi-agent settings this effect is <strong>amplified</strong> as
+        multiple agents converge on the misleading reward spots, disrupting cooperation and goal achievement. To
+        maximize impact, high-reward points are placed randomly, increasing distraction and destabilizing policy
+        learning — significantly reducing learning efficiency and overall performance.
       </p>
       <p>
-        <strong>Setup.</strong> Unity ML-Agents (scenes <code>Crawler</code>, <code>MAPA</code>,
-        <code>MARLAA</code>); learners <strong>PPO</strong> (on-policy) and <strong>SAC</strong> (off-policy);
-        team sizes single vs. multi-crawler (the poison reward is broadcast to up to 10 agents); each trained
-        <strong>clean</strong> (no cube) and <strong>poisoned</strong> (tempting attack active).
+        <strong>Implementation.</strong> We build the attack in <strong>Unity ML-Agents</strong> on the
+        <strong>Crawler</strong> benchmark — a four-legged ragdoll driven by 20 continuous joint actions whose
+        legitimate per-step reward, <code>matchSpeedReward &times; lookAtTargetReward</code>
+        (<span class="reward-chip reward-clean">&le;&nbsp;1</span>), plus a
+        <span class="reward-chip reward-clean">+1</span> target-touch bonus, keeps it walking toward its target.
+        The attacker's lure (<code>TemptingAttack.cs</code>) teleports among five fixed positions — the arena
+        center and the four corners — and relocates after each contact. In the multi-agent scene, a single
+        contact broadcasts the <span class="reward-chip reward-poison">+100</span> lure reward to
+        <strong>all ten crawlers</strong> (<code>agent0&hellip;agent9</code>) at once, so one touch contaminates
+        the entire team's learning signal through the shared reward structure. We train <strong>PPO</strong>
+        (on-policy) and <strong>SAC</strong> (off-policy) in single-agent and multi-agent configurations, each
+        with and without the attack, for <strong>1M steps</strong>.
       </p>
-
-      <div class="figure-block" style="margin-top:2rem;">
-        <!-- TODO: Replace with a schematic of the reward channel / tempting attack -->
-        <img src="static/images/carousel2.jpg" alt="Schematic: the tempting cube injects +100 into the shared reward, broadcast to every agent.">
-        <p class="figure-caption">
-          <strong>The poison channel.</strong> The clean reward keeps each crawler walking toward its target; the
-          tempting cube injects <span class="reward-chip reward-poison">+100</span> on a single contact and
-          broadcasts it to the whole team, overwhelming the locomotion signal. <em>(placeholder figure)</em>
-        </p>
-      </div>
     </div>
   </section>
 
@@ -257,42 +259,64 @@
     <div class="container is-max-desktop content">
       <h2 class="title is-3 has-text-centered">Results</h2>
       <p class="has-text-centered" style="max-width:780px;margin:0 auto 1rem;">
-        We compare clean training against training under the tempting attack across the
-        <strong>PPO/SAC × single/multi</strong> grid. Once the cube is discovered, its +100 contact reward
-        dominates the ≤1 locomotion signal and collapses gait into cube-seeking; broadcasting the reward spreads
-        this across the team. The grid below is the reported evaluation — <strong>quantitative entries are pending
-        the original Humanoids 2025 run logs</strong>.
+        We evaluate the attack across multi-agent and single-agent settings with PPO and SAC, comparing
+        cumulative rewards of crawler and attacker agents with and without the attack after 1M training steps.
       </p>
 
       <div class="table-wrap">
         <table class="results-table">
           <thead>
             <tr>
-              <th>Setting</th>
-              <th>Clean<br>locomotion reward</th>
-              <th>Clean<br>goal success</th>
-              <th>Poisoned<br>cube-contact rate</th>
-              <th>Poisoned<br>locomotion reward</th>
+              <th>Scenario</th>
+              <th>Agent</th>
+              <th>Steps</th>
+              <th>Cumulative reward</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td>PPO · single</td><td class="pending">—</td><td class="pending">—</td><td class="pending">—</td><td class="pending">—</td></tr>
-            <tr><td>PPO · multi</td><td class="pending">—</td><td class="pending">—</td><td class="pending">—</td><td class="pending">—</td></tr>
-            <tr><td>SAC · single</td><td class="pending">—</td><td class="pending">—</td><td class="pending">—</td><td class="pending">—</td></tr>
-            <tr><td>SAC · multi</td><td class="pending">—</td><td class="pending">—</td><td class="pending">—</td><td class="pending">—</td></tr>
+            <tr><td>Multi-Agent PPO</td><td>Crawler</td><td>1M</td><td>528.4</td></tr>
+            <tr class="is-highlight"><td>Multi-Agent PPO under Attack</td><td>Crawler</td><td>1M</td><td>429.4</td></tr>
+            <tr><td>Multi-Agent PPO under Attack</td><td>Attacker</td><td>1M</td><td class="neg">&minus;2.903</td></tr>
+            <tr><td>Multi-Agent SAC</td><td>Crawler</td><td>1M</td><td>971.3</td></tr>
+            <tr class="is-highlight"><td>Multi-Agent SAC under Attack</td><td>Crawler</td><td>1M</td><td>769.9</td></tr>
+            <tr><td>Multi-Agent SAC under Attack</td><td>Attacker</td><td>1M</td><td class="neg">&minus;2.449</td></tr>
+            <tr class="group-start"><td>Single-Agent PPO</td><td>Crawler</td><td>1M</td><td>647.5</td></tr>
+            <tr class="is-highlight"><td>Single-Agent PPO under Attack</td><td>Crawler</td><td>1M</td><td>302.5</td></tr>
+            <tr><td>Single-Agent PPO under Attack</td><td>Attacker</td><td>1M</td><td>1</td></tr>
+            <tr><td>Single-Agent SAC</td><td>Crawler</td><td>1M</td><td>1,276</td></tr>
+            <tr class="is-highlight"><td>Single-Agent SAC under Attack</td><td>Crawler</td><td>1M</td><td>23.93</td></tr>
+            <tr><td>Single-Agent SAC under Attack</td><td>Attacker</td><td>1M</td><td class="neg">&minus;31.43</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="table-note has-text-centered"><strong>Table 1.</strong> Evaluation grid — clean vs. tempting-attack across PPO/SAC and single/multi-crawler. Populate from the training logs (higher locomotion reward / goal success is better; a higher cube-contact rate means a stronger lure).</p>
+      <p class="table-note has-text-centered"><strong>Table&nbsp;I.</strong> Cumulative reward with and without attack. Highlighted rows show crawler performance under the poisoning attack.</p>
 
-      <div class="figure-block" style="margin-top:2rem;max-width:920px;">
-        <!-- TODO: Replace with reward curves (clean vs poisoned) -->
-        <img src="static/images/carousel3.jpg" alt="Locomotion reward over training, clean versus under the tempting attack.">
+      <p style="margin-top:1.5rem;">
+        In the <strong>multi-agent</strong> setting, the attack drops PPO from 528.4 to 429.4
+        (<strong>&minus;18.7%</strong>) and SAC from 971.3 to 769.9 (<strong>&minus;20.9%</strong>). In
+        <strong>single-agent</strong> scenarios the impact is more severe: PPO falls from 647.5 to 302.5, and SAC
+        shows the largest drop — from 1,276 to 23.93 — while the attacker itself collects little or negative
+        reward. The attack effectively disrupts agent learning, with <strong>PPO more vulnerable than
+        SAC</strong>, and multi-agent systems, while slightly more robust, still clearly affected.
+      </p>
+
+      <div class="figure-block" style="margin-top:2rem;max-width:760px;">
+        <img src="static/images/fig1_reward_curves.png" alt="Reward curves over training steps: single-agent PPO and SAC (top) and multi-agent PPO and SAC (bottom), each with and without the poisoning attack.">
         <p class="figure-caption">
-          <strong>Effect of the attack.</strong> Locomotion reward over training, clean vs. under the tempting
-          attack, contrasting PPO/SAC and single/multi-crawler. <em>(placeholder figure)</em>
+          <strong>Reward variations of PPO and SAC</strong> in single-agent (top) and multi-agent (bottom)
+          environments under baseline and attack conditions — attack conditions cause greater reward fluctuations
+          and performance degradation, especially in multi-agent settings.
         </p>
       </div>
+
+      <p style="margin-top:2rem;">
+        <strong>Takeaway.</strong> Multi-agent reinforcement learning systems are at the core of human-interactive
+        robotics, but they are highly vulnerable to reward poisoning attacks during training. This risk is
+        particularly severe in environments with strong inter-agent dependencies, where manipulated rewards can
+        compromise the entire system. Mitigating this threat requires not only robust reward functions but also
+        early detection and defense mechanisms — future research must prioritize not just performance, but also
+        security and trustworthiness.
+      </p>
     </div>
   </section>
 
@@ -308,7 +332,7 @@
       </div>
       <pre id="bibtex-code"><code>@inproceedings{choi2025poisoning,
   title     = {Poisoning Attacks on Multi-Agent Reinforcement Learning Systems},
-  author    = {Chanyeok Choi and Cho and Youngmoon Lee},
+  author    = {Chanyeok Choi and Jaehwan Cho and Youngmoon Lee},
   booktitle = {IEEE-RAS International Conference on Humanoid Robots (Humanoids),
                Late-Breaking Report},
   year      = {2025}

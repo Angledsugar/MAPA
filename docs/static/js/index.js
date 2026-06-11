@@ -31,8 +31,10 @@ document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
         const dropdown = document.getElementById('moreWorksDropdown');
         const button = document.querySelector('.more-works-btn');
-        dropdown.classList.remove('show');
-        button.classList.remove('active');
+        if (dropdown && button) {
+            dropdown.classList.remove('show');
+            button.classList.remove('active');
+        }
     }
 });
 
@@ -131,10 +133,13 @@ $(document).ready(function() {
 		autoplaySpeed: 5000,
     }
 
-	// Initialize all div with carousel class
-    var carousels = bulmaCarousel.attach('.carousel', options);
-	
-    bulmaSlider.attach();
+	// Initialize all div with carousel class (libraries are only loaded on pages that use them)
+    if (typeof bulmaCarousel !== 'undefined') {
+        bulmaCarousel.attach('.carousel', options);
+    }
+    if (typeof bulmaSlider !== 'undefined') {
+        bulmaSlider.attach();
+    }
     
     // Setup video autoplay for carousel
     setupVideoCarouselAutoplay();
